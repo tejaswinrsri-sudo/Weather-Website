@@ -2,7 +2,7 @@
 
 A simple, clean weather application built with **vanilla JavaScript**, **Node.js**, and **Express**. It fetches real-time weather data from the [OpenWeatherMap API](https://openweathermap.org/api) using a secure backend proxy — so your API key is never exposed in the browser.
 
-![Weather App Screenshot](screenshot.png)
+![Weather App Screenshot](screenshot1.png)
 
 ---
 
