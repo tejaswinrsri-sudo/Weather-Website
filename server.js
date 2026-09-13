@@ -3,18 +3,23 @@ const express = require('express');
 const path = require('path');
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
+// Serve static files (CSS, JS, images) from the current folder
 app.use(express.static(path.join(__dirname)));
 
-// Debug: print the key once at startup
-const key = process.env.WEATHER_API_KEY;
-console.log('🔑 API key loaded:', key ? `✅ (${key.length} chars)` : '❌ MISSING');
-console.log('🔑 First 8 chars:', key ? key.slice(0, 8) : 'N/A');
+// 🔧 FIX: Explicitly serve index.html at the root route
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html'));
+});
 
+// Weather proxy API route
 app.get('/api/weather', async (req, res) => {
   const { city } = req.query;
-  if (!city) return res.status(400).json({ error: 'City is required' });
+
+  if (!city) {
+    return res.status(400).json({ error: 'City is required' });
+  }
 
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(city)}&appid=${process.env.WEATHER_API_KEY}&units=metric`;
 
@@ -23,7 +28,9 @@ app.get('/api/weather', async (req, res) => {
   try {
     const response = await fetch(url);
     const data = await response.json();
-    console.log('📩 Response cod:', data.cod, '| message:', data.message || 'OK');
+
+    console.log('📩 OpenWeatherMap response:', data.cod, data.message || 'OK');
+
     res.status(response.status).json(data);
   } catch (err) {
     console.error('❌ Fetch error:', err.message);
