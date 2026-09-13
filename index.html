@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weather App</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <h1>Weather App</h1>
+
+    <div class="search-box">
+      <input type="text" id="cityInput" placeholder="Enter city name..." />
+      <button id="searchBtn">Search</button>
+    </div>
+
+    <div id="weatherResult" class="weather-card hidden">
+      <h2 id="cityName"></h2>
+      <img id="weatherIcon" src="" alt="weather icon" />
+      <p id="temperature"></p>
+      <p id="description"></p>
+      <div class="details">
+        <p>💧 Humidity: <span id="humidity"></span></p>
+        <p>💨 Wind: <span id="wind"></span></p>
+        <p>🌡️ Feels Like: <span id="feelsLike"></span></p>
+      </div>
+    </div>
+
+    <p id="errorMsg" class="error hidden"></p>
+  </div>
+
+  <!-- Only script.js is needed — the server handles the API key -->
+  <script src="script.js"></script>
+</body>
+</html>
