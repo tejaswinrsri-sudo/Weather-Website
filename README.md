@@ -170,14 +170,9 @@ npm start          # Same as above (if configured)
 
 ---
 
-## 🌐 Deploying
+## 🚀 Live Demo
 
-This app is ready to deploy to any Node.js host:
-
-- [Render](https://render.com/)
-- [Railway](https://railway.app/)
-- [Vercel](https://vercel.com/) (with serverless functions)
-- [Fly.io](https://fly.io/)
+**[https://lovely-travesseiro-c62fcc.netlify.app](https://lovely-travesseiro-c62fcc.netlify.app)**
 
 Set the environment variable `WEATHER_API_KEY` in your host's dashboard (do **not** upload `.env`).
 
